@@ -1,7 +1,17 @@
+id: 'this'
 title: This Website
 images: 
   - 
 gif: ""
+stack:
+  - Vue
+  - Nuxt
+  - TS
+  - Bun
+points:
+  - < 
+    I used Nuxt's Content feature that parses YML files as a collection of objects,
+    allowing me to add new project data easily.
 urls:
   isGithub: true
   url: taef_2

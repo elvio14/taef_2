@@ -8,6 +8,7 @@
         "@nuxt/content": "^3.10.0",
         "better-sqlite3": "^12.5.0",
         "nuxt": "^4.2.2",
+        "tippy": "^0.0.0",
         "vue": "^3.5.26",
         "vue-router": "^4.6.4",
       },
@@ -1571,6 +1572,8 @@
     "tinyexec": ["tinyexec@1.0.2", "", {}, "sha512-W/KYk+NFhkmsYpuHq5JykngiOCnxeVL8v8dFnqxSD8qEEdRfXk1SDM6JzNqcERbcGYj9tMrDQBYV9cjgnunFIg=="],
 
     "tinyglobby": ["tinyglobby@0.2.15", "", { "dependencies": { "fdir": "^6.5.0", "picomatch": "^4.0.3" } }, "sha512-j2Zq4NyQYG5XMST4cbs02Ak8iJUdxRM0XI5QyxXuZOzKOINmWurp3smXu3y5wDcJrptwpSjgXHzIQxR0omXljQ=="],
+
+    "tippy": ["tippy@0.0.0", "", {}, "sha512-GOrE/mzoeL4t7Q2Bky+7efOZJKH3W95DZIUez+nUns37jHf8R9PEupuEx9F7HolxX+0fzzpKfas2N+LIlYHXAA=="],
 
     "to-buffer": ["to-buffer@1.2.2", "", { "dependencies": { "isarray": "^2.0.5", "safe-buffer": "^5.2.1", "typed-array-buffer": "^1.0.3" } }, "sha512-db0E3UJjcFhpDhAF4tLo03oli3pwl3dbnzXOUIlRKrp+ldk/VUxzpWYZENsw2SZiuBjHAk7DfB0VU7NKdpb6sw=="],
 

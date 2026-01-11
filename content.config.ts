@@ -7,13 +7,12 @@ export default defineContentConfig({
             type: 'data',
             source: 'projects/**.yml',
             schema: z.object({
+                id: z.string(),
                 title: z.string(),
                 images: z.array(z.string()),
                 gif: z.string(),
-                points: z.object({
-                    subtitle: z.string(),
-                    description: z.string()
-                }),
+                stack: z.array(z.string()),
+                points: z.array(z.string()),
                 urls: z.object({
                     isGithub: z.boolean(),
                     url: z.string()
