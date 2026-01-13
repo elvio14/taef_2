@@ -92,7 +92,7 @@ const getImages = () => {
 </template>
 <style lang="css" scoped>
     #left {
-        background-color: white;
+        background-color:var(--project-on-bg);
         border-top-left-radius: 1rem;
         border-bottom-left-radius: 1rem;
         padding: 2rem;
@@ -103,7 +103,7 @@ const getImages = () => {
     }
 
     #right {
-        background-color: white;
+        background-color:var(--project-on-bg);
         border-top-right-radius: 1rem;
         border-bottom-right-radius: 1rem;
         padding-top: 4rem;

@@ -45,16 +45,16 @@ const currentProject = computed(() => {
     <div id="root-div">
 
         <nav class="card-nav">
-            <NavButton name="About" :isActive="activeCard === Card.About" @click="activeCard = Card.About"/>
-            <NavButton name="Projects" :isActive="activeCard === Card.Projects" @click="activeCard = Card.Projects"/>
-            <NavButton name="Links" :isActive="activeCard === Card.Links" @click="activeCard = Card.Links"/>
+            <NavButton name="About" color="var(--about-bg)" :isActive="activeCard === Card.About" @click="activeCard = Card.About"/>
+            <NavButton name="Projects" color="var(--project-bg)" :isActive="activeCard === Card.Projects" @click="activeCard = Card.Projects"/>
+            <NavButton name="Links" color="lightseagreen" :isActive="activeCard === Card.Links" @click="activeCard = Card.Links"/>
         </nav>
 
 
-        <div id="card">
-            <AboutCard v-if="activeCard == Card.About"/>
+        <div id="card" class="has-texture">
+            <AboutCard class="card-child" v-if="activeCard == Card.About"/>
 
-            <div id="project-card" v-if="activeCard === Card.Projects">
+            <div id="project-card" class="card-child has-texture" v-if="activeCard === Card.Projects">
                 <nav class="project-nav">
                     <button
                         v-for="(p, idx) in projects"
@@ -77,7 +77,6 @@ const currentProject = computed(() => {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        border: solid 2px red;
     }
     .card-nav {
         display: flex;
@@ -90,17 +89,21 @@ const currentProject = computed(() => {
     #card {
         width: 80vw;
         height: 85vh;
+        border-radius: 1rem;
+    }
+
+    .card-child{
+        width: 100%;
+        height: 100%;
+        border-radius: inherit;
     }
 
     #project-card {
         display: grid;
         grid-template-columns: 1fr 5fr;
-        border-radius: 1rem;
-        width: 100%;
-        height: 100%;
         align-items: stretch;
         min-height: 0;
-        background-color: aliceblue;
+        background-color: var(--project-bg);
     }
 
     .project-nav {

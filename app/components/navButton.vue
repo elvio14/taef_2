@@ -2,6 +2,7 @@
     const props = defineProps<{
       name: string
       isActive: boolean
+      color: string
     }>()
 
     const name = computed(() => props.name ?? 'Button')
@@ -13,9 +14,6 @@
         return width
     })
 
-    const color = computed(()=> {
-        return isActive.value ? "aliceblue" : "lightgrey"
-    })
 </script>
 <template>
     <div class="nav-button-root">
