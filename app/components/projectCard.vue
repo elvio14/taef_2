@@ -1,16 +1,16 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, render } from 'vue'
+import { marked } from 'marked'
 import Index from '~/pages/index.vue'
 
 interface Project {
     id: string
     title: string
     images: string[]
-    gif: string
     stack: string[]
     points: string[]
     github: string
-    otherURL: string
+    md: string
     date: string | Date
 }
 
@@ -43,6 +43,11 @@ const getImages = () => {
     }) ?? []
 }
 
+const renderedMarkdown = computed(() => {
+    if (!props.project?.md) return ''
+    return marked(props.project.md)
+})
+
 </script>
 <template>
     <article class="project-card">
@@ -68,6 +73,7 @@ const getImages = () => {
                     </div>
                 </div>
             </div>
+            <div v-if="project.md" class="markdown-content" v-html="renderedMarkdown"></div>
             <div className="flex flex-col gap-4">
                 <p v-for="(point,index) in project.points" :key="`point-${project.id}-${index}`">{{ point }}</p>
             </div>
@@ -75,17 +81,23 @@ const getImages = () => {
         <div id="right">
             <div className="rounded-lg">
                 <UCarousel
-                  v-slot="{ item }"
-                  loop
-                  arrows
-                  :dots="true"
-                  :items="getImages()"
-                  :ui="{
-                    item: 'basis-1/1 ps-2',
-                  }"
+                    v-if="getImages().length > 1"
+                    v-slot="{ item }"
+                    :items="getImages()"
+                    :ui="{
+                      item: 'basis-full'
+                    }"
+                    :page="1"
+                    arrows
                 >
-                  <img :src="item" width="700" height="auto" className="rounded-lg">
+                  <img :key="item" :src="item" className="project-image rounded-lg">
                 </UCarousel>
+                <img
+                    v-else-if="getImages().length === 1"
+                    :src="getImages()[0]"
+                    width="700"
+                    height="auto"
+                    className="rounded-lg project-image" />
             </div>
         </div>
     </article>
@@ -100,6 +112,7 @@ const getImages = () => {
         display: flex;
         flex-direction: column;
         gap: 2rem;
+        overflow-y: scroll;
     }
 
     #right {
@@ -116,8 +129,32 @@ const getImages = () => {
         padding: 2rem;
         padding-left: 0rem;
     }
+
+    .project-image {
+        max-width: 700px;
+        max-height: 500px;
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
     .icon {
         width: 2rem;
         cursor: pointer;
+    }
+    
+    .markdown-content :deep(h1) { font-size: 2rem; margin-bottom: 1rem; }
+    .markdown-content :deep(h2) { font-size: 1.5rem; margin-bottom: 0.75rem; }
+    .markdown-content :deep(p) { margin-bottom: 1rem; }
+    .markdown-content :deep(code) { background: #f4f4f4; padding: 0.2rem 0.4rem; border-radius: 3px; }
+    .markdown-content :deep(a) {
+        color: var(--project-bg);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s ease;
+        cursor: pointer;
+    }
+    
+    .markdown-content :deep(a:hover) {
+        text-decoration: underline;
     }
 </style>

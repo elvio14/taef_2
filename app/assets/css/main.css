@@ -19,16 +19,18 @@
   --heading-font: "HeadFont", Georgia, "Times New Roman", serif;
 
   --texture-url: url('/textures/beige-paper.png');
-  --texture-opacity: 0.9;
+  --texture-opacity: 1.0;
   --texture-size: 200px;
 
   --accent: #c21a1a;
 
-  --about-bg: #498467;
+  --about-bg: #B3EFB2;
 
-
-  --project-bg: #52B788;
+  --project-bg: #7A9E7E;
   --project-on-bg: white;
+
+  --links-bg: #517863;
+  --links-on-bg: white;
 }
 
 /* global usage */

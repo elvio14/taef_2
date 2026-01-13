@@ -9,6 +9,7 @@ export default defineNuxtConfig({
       link: [
         //{ rel: 'preload', href: '~/assets/RockSalt-Regular.ttf', as: 'font', type: 'font/ttf', crossorigin: '' },
         //{ rel: 'preload', href: '~/assets/PatrickHand-Regular.ttf', as: 'font', type: 'font/ttf', crossorigin: '' }
+          { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
       ]
     }
   }

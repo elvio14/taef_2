@@ -1,0 +1,21 @@
+id: 'santa'
+title: Clutch Santa
+images: 
+  - santa_1.webp
+  - santa_2.webp
+  - santa_3.webp
+  - santa_4.webp
+  - santa_5.webp
+stack:
+  - ts
+  - next
+  - tailwind
+  - firebase
+points:
+  - > 
+    I developed this web application as a platform for Secret Santa drawing and wishlist sharing.
+    A group of users can add Amazon links into their wishlists and their appointed Secret Santa can view them.
+  - >
+    I meta-scraped Amazon product links to get details about the products, such as title and images.
+github: clutch-santa
+date: 2024-07-19

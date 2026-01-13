@@ -4,7 +4,6 @@ images:
   - sigma_1.png
   - sigma_2.png
   - sigma_3.png
-gif: ""
 stack:
   - rust
 points:

@@ -1,0 +1,11 @@
+id: 'termite'
+title: Flying Termite Sim
+images: 
+  - TERMITE_DEMO.gif
+stack:
+  - cpp
+points:
+  - > 
+    I made this simulation of the natural behaviour of flying termites, which is the attraction to light source.
+github: termite
+date: 2023-06-01

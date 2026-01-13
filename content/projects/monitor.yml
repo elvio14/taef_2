@@ -1,0 +1,12 @@
+id: 'monitor'
+title: Staff Monitor
+images: 
+  - MONITOR_DEMO.gif
+stack:
+  - csharp
+  - blazor
+points:
+  - > 
+    I did this project to practice implementing MVC software architecture and using websockets.
+github: staff-monitor
+date: 2024-03-19

@@ -1,8 +1,6 @@
 id: 'travel'
 title: Travel Planner
 images: 
-  - 
-gif: ""
 stack:
   - kotlin
   - compose

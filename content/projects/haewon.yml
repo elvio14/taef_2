@@ -1,0 +1,22 @@
+id: 'haewon'
+title: Cakery E-Commerce
+images: 
+  - haewon_1.webp
+  - haewon_2.webp
+  - haewon_3.webp
+  - haewon_4.webp
+  - haewon_5.webp
+  - haewon_6.webp
+stack:
+  - go
+  - js
+  - vue
+  - sqlite
+points:
+  - > 
+    I designed and developed this full-stack web application to practice building REST API backend and get familiar with Go.
+  - >
+    The features includes UI for both customers and admins. Customers can browse available products and order them. Admins can 
+    view those orders, manage inventory, and edit the products.
+github: backend-go
+date: 2024-06-30

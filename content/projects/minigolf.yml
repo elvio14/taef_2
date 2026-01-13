@@ -1,0 +1,17 @@
+id: 'minigolf'
+title: Mini Golf Game
+images: 
+  - MINIGOLF_DEMO_1.gif
+  - MINIGOLF_DEMO_2.gif
+  - MINIGOLF_DEMO_3.gif
+  - MINIGOLF_DEMO_4.gif
+stack:
+  - cpp
+  - opengl
+points:
+  - > 
+    I worked on this game as a submission to UBISOFT Toronto NEXT Programming Challenge,
+    which is a weekend-long. On top of the gameplay, I also developed a JSON parser to handle level data.
+github: minigolf
+date: 2025-01-19
+

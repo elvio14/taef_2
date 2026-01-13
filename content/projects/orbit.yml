@@ -1,0 +1,12 @@
+id: 'orbit'
+title: Orbit Game
+images: 
+  - ORBIT_DEMO.gif
+stack:
+  - cpp
+points:
+  - > 
+    I worked on this game as a submission to UBISOFT Toronto NEXT Programming Challenge,
+    which is a weekend-long. I used physics equations to simulate gravity between different planets in outer space.
+github: orbit-public
+date: 2024-01-19

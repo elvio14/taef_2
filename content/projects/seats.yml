@@ -1,0 +1,18 @@
+id: 'seats'
+title: Sweet Seats 3D
+images: 
+  - sweet_seats.png
+stack:
+  - js
+  - three
+  - react
+points:
+  - > 
+    I developed this 3D website to practice handling 3D elements and states management in React.
+  - >
+    I used Blender to separate the components of the 3D model and optimized it for web.
+
+github: sweetseats
+date: 2023-12-30
+md: |
+  Check out the [live demo](https://sweetseats.vercel.app/)!

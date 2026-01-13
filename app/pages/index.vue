@@ -47,7 +47,7 @@ const currentProject = computed(() => {
         <nav class="card-nav">
             <NavButton name="About" color="var(--about-bg)" :isActive="activeCard === Card.About" @click="activeCard = Card.About"/>
             <NavButton name="Projects" color="var(--project-bg)" :isActive="activeCard === Card.Projects" @click="activeCard = Card.Projects"/>
-            <NavButton name="Links" color="lightseagreen" :isActive="activeCard === Card.Links" @click="activeCard = Card.Links"/>
+            <NavButton name="Links" color="var(--links-bg)" :isActive="activeCard === Card.Links" @click="activeCard = Card.Links"/>
         </nav>
 
 
@@ -127,10 +127,10 @@ const currentProject = computed(() => {
         overflow: hidden;
         cursor: pointer;
     }
-    .project-nav button:hover {
-        background-color: rgb(223, 232, 243);
+    .project-nav button:not(.active):hover {
+        color: white;
     }
     .project-nav button.active {
-        background-color:lightsteelblue;
+        background-color: var(--project-on-bg);
     }
 </style>

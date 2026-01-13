@@ -6,7 +6,6 @@ images:
   - image3.jpeg
   - image4.jpeg
   - image5.jpeg
-gif: ""
 stack:
   - vue
   - nuxt
@@ -15,7 +14,7 @@ stack:
 points:
   - > 
     I used Nuxt's Content feature that parses YML files as a collection of objects,
-    allowing me to add new project data easily.
+    allowing me to add new project data and icons easily.
 github: taef_2
 date: 2026-01-08
 
