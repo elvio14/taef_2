@@ -1,12 +1,11 @@
 id: 'this'
 title: This Website
 images: 
-  - image_1.jpeg
-  - image_2.jpeg
-  - image_3.jpeg
-  - image_4.jpeg
-  - image_5.jpeg
-  - image_6.jpeg
+  - image1.jpeg
+  - image2.jpeg
+  - image3.jpeg
+  - image4.jpeg
+  - image5.jpeg
 gif: ""
 stack:
   - vue

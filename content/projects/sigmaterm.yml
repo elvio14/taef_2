@@ -1,9 +1,9 @@
 id: 'sigmaterm'
 title: Sigmaterm
 images: 
-  - sigmaterm_1
-  - sigmaterm_2
-  - sigmaterm_3
+  - sigma_1.png
+  - sigma_2.png
+  - sigma_3.png
 gif: ""
 stack:
   - rust

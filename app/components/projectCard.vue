@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computed,onMounted } from 'vue'
+import { computed } from 'vue'
 import Index from '~/pages/index.vue'
 
 interface Project {
@@ -37,6 +37,12 @@ const openUrl = (url?: string) => {
     window.open(url, '_blank', 'noopener')
 }
 
+const getImages = () => {
+    return props.project.images?.map((image) => {
+        return `/${image}`
+    }) ?? []
+}
+
 </script>
 <template>
     <article class="project-card">
@@ -62,12 +68,25 @@ const openUrl = (url?: string) => {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-4">
                 <p v-for="(point,index) in project.points" :key="`point-${project.id}-${index}`">{{ point }}</p>
             </div>
         </div>
         <div id="right">
-            
+            <div className="rounded-lg">
+                <UCarousel
+                  v-slot="{ item }"
+                  loop
+                  arrows
+                  :dots="true"
+                  :items="getImages()"
+                  :ui="{
+                    item: 'basis-1/1 ps-2',
+                  }"
+                >
+                  <img :src="item" width="700" height="auto" className="rounded-lg">
+                </UCarousel>
+            </div>
         </div>
     </article>
 </template>
@@ -77,6 +96,7 @@ const openUrl = (url?: string) => {
         border-top-left-radius: 1rem;
         border-bottom-left-radius: 1rem;
         padding: 2rem;
+        padding-top: 4rem;
         display: flex;
         flex-direction: column;
         gap: 2rem;
@@ -86,6 +106,9 @@ const openUrl = (url?: string) => {
         background-color: white;
         border-top-right-radius: 1rem;
         border-bottom-right-radius: 1rem;
+        padding-top: 4rem;
+        padding-right: 2rem;
+        overflow: visible;
     }
     .project-card {
         display: grid;
