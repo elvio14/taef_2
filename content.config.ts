@@ -13,10 +13,8 @@ export default defineContentConfig({
                 gif: z.string(),
                 stack: z.array(z.string()),
                 points: z.array(z.string()),
-                urls: z.object({
-                    isGithub: z.boolean(),
-                    url: z.string()
-                }),
+                github: z.string(),
+                otherURL: z.string(),
                 date: z.string().date()  //YYYY-MM-DD
             })
         })

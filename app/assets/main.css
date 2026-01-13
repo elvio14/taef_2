@@ -1,0 +1,34 @@
+@font-face {
+  font-family: "HeadFont";
+  src: url("RockSalt-Regular.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "BodyFont";
+  src: url("PatrickHand-Regular.ttf") format("truetype");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root{
+  --body-font: "BodyFont", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --heading-font: "HeadFont", Georgia, "Times New Roman", serif;
+
+  --accent: "#FF00FF"
+}
+
+/* global usage */
+html, body {
+  font-family: var(--body-font);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: black;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: var(--heading-font);
+}

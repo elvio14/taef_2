@@ -1,0 +1,22 @@
+id: 'travel'
+title: Travel Planner
+images: 
+  - 
+gif: ""
+stack:
+  - kotlin
+  - compose
+  - ktor
+  - postgres
+  - python
+points:
+  - > 
+    I and four other team members worked on this school project for Software Design course.
+    We followed the best practices of software development using Agile/Scrum framework in Jira, and worked collaboratively
+    using GitHub.
+  - >
+    The project aimed to develop a mobile app that allows users to collaboratively plan a trip in their mobile devices
+    and use it as a reference itinerary while traveling. The features includes drag-and-drop events in calendar, map view and navigation.
+    (Mapbox API), and AI trip summary. 
+github: EECS3311F25/project-group-ak
+date: 2025-12-01

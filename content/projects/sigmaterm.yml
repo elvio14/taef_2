@@ -1,0 +1,16 @@
+id: 'sigmaterm'
+title: Sigmaterm
+images: 
+  - sigmaterm_1
+  - sigmaterm_2
+  - sigmaterm_3
+gif: ""
+stack:
+  - rust
+points:
+  - > 
+    I designed and developed this Linux terminal that allows users to easily manage multiple terminal windows each with
+    customizable title and color hue simply by click-and-drag on the color slider. I used egui and winit for the GUI
+    and ptyprocess to handle pseudoterminals. Some features are still on the backlog, such as handling copy-paste and path autocomplete.
+github: sigmaterm
+date: 2025-12-15

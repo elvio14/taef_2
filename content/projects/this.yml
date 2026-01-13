@@ -1,19 +1,22 @@
 id: 'this'
 title: This Website
 images: 
-  - 
+  - image_1.jpeg
+  - image_2.jpeg
+  - image_3.jpeg
+  - image_4.jpeg
+  - image_5.jpeg
+  - image_6.jpeg
 gif: ""
 stack:
-  - Vue
-  - Nuxt
-  - TS
-  - Bun
+  - vue
+  - nuxt
+  - ts
+  - yaml
 points:
-  - < 
+  - > 
     I used Nuxt's Content feature that parses YML files as a collection of objects,
     allowing me to add new project data easily.
-urls:
-  isGithub: true
-  url: taef_2
+github: taef_2
 date: 2026-01-08
 

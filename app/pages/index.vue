@@ -43,30 +43,32 @@ const currentProject = computed(() => {
 </script>
 <template>
     <div id="root-div">
-        <div>
-            <nav class="card-nav">
-                <button
-                    :class="{ active: activeCard === Card.About}"
-                    @click="activeCard = Card.About">About</button>
-                <button
-                    :class="{ active: activeCard === Card.Projects}"
-                    @click="activeCard = Card.Projects">Projects</button>
-                <button
-                    :class="{ active: activeCard === Card.Links}"
-                    @click="activeCard = Card.Links">Links</button>
-            </nav>
-        </div>  
 
-        <AboutCard v-if="activeCard == Card.About"/>
+        <nav class="card-nav">
+            <NavButton name="About" :isActive="activeCard === Card.About" @click="activeCard = Card.About"/>
+            <NavButton name="Projects" :isActive="activeCard === Card.Projects" @click="activeCard = Card.Projects"/>
+            <NavButton name="Links" :isActive="activeCard === Card.Links" @click="activeCard = Card.Links"/>
+        </nav>
 
-        <div v-if="activeCard === Card.Projects" style="display: flex;">
-            <nav class="project-nav">
-                <button v-for="p in projects">
-                    {{ p.title }}
-                </button>
-            </nav>
-            <ProjectCard v-if="currentProject" :project="currentProject"/>
+
+        <div id="card">
+            <AboutCard v-if="activeCard == Card.About"/>
+
+            <div id="project-card" v-if="activeCard === Card.Projects">
+                <nav class="project-nav">
+                    <button
+                        v-for="(p, idx) in projects"
+                        :key="p.id ?? idx"
+                        @click="activeProjectIndex = idx"
+                        :class="{ active: activeProjectIndex === idx }"
+                    >
+                        {{ p.title }}
+                    </button>
+                </nav>
+                <ProjectCard v-if="currentProject" :project="currentProject"/>
+            </div>
         </div>
+
     </div>
 </template>
 <style scoped>
@@ -76,25 +78,56 @@ const currentProject = computed(() => {
         left: 50%;
         transform: translate(-50%, -50%);
         border: solid 2px red;
-        background-color: aqua;
     }
     .card-nav {
         display: flex;
         flex-direction: row;
-        gap: 1rem; 
+        gap: 0rem; 
+        height: 2.5rem;
+        padding-left: 1rem;
+    }
+
+    #card {
+        width: 80vw;
+        height: 85vh;
+    }
+
+    #project-card {
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+        border-radius: 1rem;
+        width: 100%;
+        height: 100%;
+        align-items: stretch;
+        min-height: 0;
+        background-color: aliceblue;
     }
 
     .project-nav {
         padding-top: 2rem;
-        padding-right: 1rem;
-        width: 10vw;
         display: flex;
         flex-direction: column;
-        align-items: end;
-        gap: 2rem;
+        align-items: center;
+        gap: 0.5rem;
     }
 
     .project-nav button {
-
+        background-color: transparent;
+        font-size: large;
+        width: 85%;
+        text-align: start;
+        padding: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-radius: 0.7rem;
+        border: none;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    .project-nav button:hover {
+        background-color: rgb(223, 232, 243);
+    }
+    .project-nav button.active {
+        background-color:lightsteelblue;
     }
 </style>

@@ -1,0 +1,61 @@
+<script lang="ts" setup>
+    const props = defineProps<{
+      name: string
+      isActive: boolean
+    }>()
+
+    const name = computed(() => props.name ?? 'Button')
+    const isActive = computed(() => props.isActive ?? false)
+
+    const totalWidth = computed(() => {
+        const len = name.value.length
+        const width = 40 + len*24
+        return width
+    })
+
+    const color = computed(()=> {
+        return isActive.value ? "aliceblue" : "lightgrey"
+    })
+</script>
+<template>
+    <div class="nav-button-root">
+        <svg version="1.1" :width="totalWidth" height="40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <defs>
+                <mask :id="`${name}-left-bottom`" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
+                    <rect width="20" height="100%" fill="white"/>
+                    <circle cx="0" cy="20" r="20" fill="black"/>
+                    <rect width="20" height="50%" fill="black"/>
+                </mask>
+
+                <mask :id="`${name}-left-top`" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
+                    <circle cx="40" cy="20" r="20" fill="white"/>
+                    <rect x="20" y="50%" width="20" height="50%" fill="white"/>
+                </mask>
+
+                <mask :id="`${name}-right-bottom`" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
+                    <rect :x="totalWidth-20" width="20" height="100%" fill="white"/>
+                    <circle :cx="totalWidth" cy="20" r="20" fill="black"/>
+                    <rect :x="totalWidth-20" width="20" height="50%" fill="black"/>
+                </mask>
+
+                <mask :id="`${name}-right-top`" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
+                    <circle :cx="totalWidth-40" cy="20" r="20" fill="white"/>
+                    <rect :x="totalWidth-40" y="50%" width="20" height="50%" fill="white"/>
+                </mask>
+            </defs>
+            <g :fill="color">
+                <rect width="20" height="100%" :mask="`url(#${name}-left-bottom)`"/>
+                <rect x="20" width="20" height="100%" :mask="`url(#${name}-left-top)`"/>
+                <rect x="40" :width="totalWidth-80" height="100%"/>
+                <rect :x="totalWidth-20" width="20" height="100%" :mask="`url(#${name}-right-bottom)`"/>
+                <rect :x="totalWidth - 40" width="20" height="100%" :mask="`url(#${name}-right-top)`"/>
+            </g>
+            <text :x="totalWidth/2" y="70%" text-anchor="middle" font-family="HeadFont">{{ name }}</text>
+        </svg>
+    </div>
+</template>
+<style scoped>
+    .nav-button-root{
+        cursor: pointer;
+    }
+</style>
