@@ -13,3 +13,5 @@ points:
     and ptyprocess to handle pseudoterminals. Some features are still on the backlog, such as handling copy-paste and path autocomplete.
 github: sigmaterm
 date: 2025-12-15
+md: |
+  Watch demo video [here](https://youtu.be/1Xw0pK46ME8?si=tDRTfYIakglX5cLU)!

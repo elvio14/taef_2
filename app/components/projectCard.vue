@@ -144,7 +144,7 @@ const renderedMarkdown = computed(() => {
     .markdown-content :deep(p) { margin-bottom: 1rem; }
     .markdown-content :deep(code) { background: #f4f4f4; padding: 0.2rem 0.4rem; border-radius: 3px; }
     .markdown-content :deep(a) {
-        color: var(--project-bg);
+        color: var(--accent);
         text-decoration: none;
         font-weight: 500;
         transition: color 0.2s ease;

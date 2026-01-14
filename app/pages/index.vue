@@ -26,7 +26,7 @@ enum Card {
 }
 
 const activeCard = useState<Card>('activeCard', () => Card.Projects)
-const activeProjectIndex = useState('activeProjectIndex', () => 0)
+const activeProjectIndex = useState('activeProjectIndex', () => 1)
 const hoveredProjectNavIndex = useState('hoveredProjectNavIndex', () => -1)
 
 const { data: projects } = await useAsyncData('projects', () => {
@@ -48,7 +48,6 @@ const currentProject = computed(() => {
         <nav class="card-nav">
             <NavButton name="About" color="var(--about-bg)" :isActive="activeCard === Card.About" @click="activeCard = Card.About"/>
             <NavButton name="Projects" color="var(--project-bg)" :isActive="activeCard === Card.Projects" @click="activeCard = Card.Projects"/>
-            <NavButton name="Links" color="var(--links-bg)" :isActive="activeCard === Card.Links" @click="activeCard = Card.Links"/>
         </nav>
 
 
@@ -66,8 +65,8 @@ const currentProject = computed(() => {
                         >
                             {{ p.title }}
                         </button>
-                        <div v-if="hoveredProjectNavIndex === idx" class="hover-stack">
-                            <div v-for="s in p.stack" :key="s" :id="`stack-icon-${idx}-${s}`" class="hover-stack-icon" 
+                        <div v-if="hoveredProjectNavIndex === idx" class="hover-stack" id="`nav-stack-${idx}`">
+                            <div v-for="s in p.stack" :key="`nav-stack${s}`" :id="`nav-stack-icon-${idx}-${s}`" class="hover-stack-icon" 
                                 v-html="getIconSVG(s)" aria-hidden="true"></div>
                         </div>
                     </div>
@@ -118,7 +117,7 @@ const currentProject = computed(() => {
         display: flex;
         flex-direction: column;
         align-items: start;
-        gap: 0.5rem;
+        gap: 0.3rem;
     }
 
     .nav-item-wrapper {
@@ -130,9 +129,6 @@ const currentProject = computed(() => {
         font-size: large;
         width: 100%;
         text-align: start;
-        /* padding: 1rem;
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem; */
         height: 3rem;
         padding-left: 1rem;
         padding-right: 1rem;
