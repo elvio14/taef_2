@@ -5,6 +5,7 @@ images:
 stack:
   - csharp
   - blazor
+  - dotnet
 points:
   - > 
     I did this project to practice implementing MVC software architecture and using websockets.

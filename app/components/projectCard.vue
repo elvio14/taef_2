@@ -82,6 +82,7 @@ const renderedMarkdown = computed(() => {
             <div className="rounded-lg">
                 <UCarousel
                     v-if="getImages().length > 1"
+                    :key="`carousel-${project.id}`"
                     v-slot="{ item }"
                     :items="getImages()"
                     :ui="{
@@ -90,7 +91,7 @@ const renderedMarkdown = computed(() => {
                     :page="1"
                     arrows
                 >
-                  <img :key="item" :src="item" className="project-image rounded-lg">
+                  <img :key="item" :src="item" class="project-image rounded-lg">
                 </UCarousel>
                 <img
                     v-else-if="getImages().length === 1"
@@ -131,10 +132,6 @@ const renderedMarkdown = computed(() => {
     }
 
     .project-image {
-        max-width: 700px;
-        max-height: 500px;
-        width: 100%;
-        height: auto;
         object-fit: contain;
     }
     .icon {

@@ -27,6 +27,7 @@ enum Card {
 
 const activeCard = useState<Card>('activeCard', () => Card.Projects)
 const activeProjectIndex = useState('activeProjectIndex', () => 0)
+const hoveredProjectNavIndex = useState('hoveredProjectNavIndex', () => -1)
 
 const { data: projects } = await useAsyncData('projects', () => {
   return queryCollection('projects')
@@ -36,7 +37,7 @@ const { data: projects } = await useAsyncData('projects', () => {
 
 const currentProject = computed(() => {
   const list = projects?.value
-  const idx = activeProjectIndex.value ?? 0
+  const idx = activeProjectIndex.value ?? 1
   return Array.isArray(list) && list.length > 0 ? list[idx] : null
 })
 
@@ -56,14 +57,20 @@ const currentProject = computed(() => {
 
             <div id="project-card" class="card-child has-texture" v-if="activeCard === Card.Projects">
                 <nav class="project-nav">
-                    <button
-                        v-for="(p, idx) in projects"
-                        :key="p.id ?? idx"
-                        @click="activeProjectIndex = idx"
-                        :class="{ active: activeProjectIndex === idx }"
-                    >
-                        {{ p.title }}
-                    </button>
+                    <div v-for="(p, idx) in projects" :key="p.id ?? idx" class="nav-item-wrapper">
+                        <button
+                            @mouseenter="hoveredProjectNavIndex = idx"
+                            @mouseleave="hoveredProjectNavIndex = -1"
+                            @click="activeProjectIndex = idx"
+                            :class="{ active: activeProjectIndex === idx }"
+                        >
+                            {{ p.title }}
+                        </button>
+                        <div v-if="hoveredProjectNavIndex === idx" class="hover-stack">
+                            <div v-for="s in p.stack" :key="s" :id="`stack-icon-${idx}-${s}`" class="hover-stack-icon" 
+                                v-html="getIconSVG(s)" aria-hidden="true"></div>
+                        </div>
+                    </div>
                 </nav>
                 <ProjectCard v-if="currentProject" :project="currentProject"/>
             </div>
@@ -110,27 +117,58 @@ const currentProject = computed(() => {
         padding-top: 2rem;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: start;
         gap: 0.5rem;
+    }
+
+    .nav-item-wrapper {
+        position: relative;
     }
 
     .project-nav button {
         background-color: transparent;
         font-size: large;
-        width: 85%;
+        width: 100%;
         text-align: start;
-        padding: 1rem;
+        /* padding: 1rem;
         padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
-        border-radius: 0.7rem;
+        padding-bottom: 0.5rem; */
+        height: 3rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        border-top-right-radius: 0.6rem;
+        border-bottom-right-radius: 0.6rem;
         border: none;
-        overflow: hidden;
+        /* overflow: hidden; */
         cursor: pointer;
     }
     .project-nav button:not(.active):hover {
-        color: white;
+        background-color: white;
     }
     .project-nav button.active {
         background-color: var(--project-on-bg);
+    }
+
+    .hover-stack {
+        position: absolute;
+        right: 100%;  /* float to the left of the button */
+        top: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+        height: 3rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        background: linear-gradient(to right, var(--project-on-bg) 85%, transparent 100%);
+        border-top-left-radius: 0.6rem;
+        border-bottom-left-radius: 0.6rem;
+        white-space: nowrap;
+        z-index: 100;
+        pointer-events: none; /* so it doesn't interfere with mouse events */
+    }
+
+    .hover-stack-icon {
+        width: 1rem;
     }
 </style>
