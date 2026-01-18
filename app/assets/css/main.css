@@ -18,16 +18,16 @@
   --body-font: "BodyFont", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   --heading-font: "HeadFont", Georgia, "Times New Roman", serif;
 
-  --texture-url: url('/textures/beige-paper.png');
-  --texture-opacity: 1.0;
+  --texture-url: url('/textures/fresh-snow.png');
+  --texture-opacity: 0.3;
   --texture-size: 200px;
 
   --accent: #c21a1a;
 
-  --about-bg: #B3EFB2;
+  --about-bg: #b2d9ef21;
 
-  --project-bg: #7A9E7E;
-  --project-on-bg: white;
+  --project-bg: #ffffff42;
+  --project-on-bg: rgba(255, 255, 255, 0.562);
 }
 
 /* global usage */

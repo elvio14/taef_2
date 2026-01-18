@@ -7,6 +7,7 @@
 
     const name = computed(() => props.name ?? 'Button')
     const isActive = computed(() => props.isActive ?? false)
+    const height = ref(40)
 
     const totalWidth = computed(() => {
         const len = name.value.length
@@ -16,12 +17,12 @@
 
 </script>
 <template>
-    <div class="nav-button-root">
-        <svg version="1.1" :width="totalWidth" height="40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <div :class="{'is-active': isActive}" class="nav-button-root">
+        <svg version="1.1" :width="totalWidth" :height="height" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <defs>
                 <!-- Texture pattern -->
                 <pattern :id="`${name}-texture`" patternUnits="userSpaceOnUse" width="200" height="200">
-                    <image href="/textures/beige-paper.png" width="200" height="200" />
+                    <image href="/textures/fresh-snow.png" width="200" height="200" />
                 </pattern>
                 
                 <mask :id="`${name}-left-bottom`" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
@@ -54,7 +55,7 @@
                 <rect :x="totalWidth - 40" width="20" height="100%" :mask="`url(#${name}-right-top)`"/>
             </g>
             <!-- Texture overlay with multiply blend mode -->
-            <g style="mix-blend-mode: multiply; opacity: 0.9;">
+            <g style="mix-blend-mode: multiply; opacity: 0.3;">
                 <rect width="20" height="100%" :mask="`url(#${name}-left-bottom)`" :fill="`url(#${name}-texture)`"/>
                 <rect x="20" width="20" height="100%" :mask="`url(#${name}-left-top)`" :fill="`url(#${name}-texture)`"/>
                 <rect x="40" :width="totalWidth-80" height="100%" :fill="`url(#${name}-texture)`"/>
@@ -66,10 +67,8 @@
     </div>
 </template>
 <style scoped>
-    .nav-button-root{
-        cursor: pointer;
-    }
-    .nav-button-root:hover .nav-text {
+    .nav-button-root:not(.is-active):hover .nav-text {
         fill: white;
+        cursor: pointer;
     }
 </style>

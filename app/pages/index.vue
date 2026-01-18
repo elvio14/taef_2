@@ -25,7 +25,7 @@ enum Card {
     Links = 'links'
 }
 
-const activeCard = useState<Card>('activeCard', () => Card.Projects)
+const activeCard = useState<Card>('activeCard', () => Card.About)
 const activeProjectIndex = useState('activeProjectIndex', () => 1)
 const hoveredProjectNavIndex = useState('hoveredProjectNavIndex', () => -1)
 
@@ -65,7 +65,7 @@ const currentProject = computed(() => {
                         >
                             {{ p.title }}
                         </button>
-                        <div v-if="hoveredProjectNavIndex === idx" class="hover-stack" id="`nav-stack-${idx}`">
+                        <div v-if="hoveredProjectNavIndex === idx && activeProjectIndex != idx" class="hover-stack" id="`nav-stack-${idx}`">
                             <div v-for="s in p.stack" :key="`nav-stack${s}`" :id="`nav-stack-icon-${idx}-${s}`" class="hover-stack-icon" 
                                 v-html="getIconSVG(s)" aria-hidden="true"></div>
                         </div>
