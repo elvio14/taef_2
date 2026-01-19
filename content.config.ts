@@ -16,6 +16,14 @@ export default defineContentConfig({
                 md: z.string(),
                 date: z.string().date()  //YYYY-MM-DD
             })
+        }),
+        resume: defineCollection({
+            type: 'page',
+            source: 'resume.md'
+        }),
+        about: defineCollection({
+            type: 'page',
+            source: 'about.md'
         })
     }
 })

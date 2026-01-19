@@ -31,11 +31,6 @@ const getGithubURL = (id: string) => {
         return `https://www.github.com/elvio14/${id}`
     }
 }
-const openUrl = (url?: string) => {
-    if (!url) return
-    if (typeof window === 'undefined') return
-    window.open(url, '_blank', 'noopener')
-}
 
 const getImages = () => {
     return props.project.images?.map((image) => {

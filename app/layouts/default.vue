@@ -198,7 +198,6 @@ const backgroundStyle = computed(() => {
 </script>
 <template>
     <div id="layout-root" :style="backgroundStyle">
-        <h1>{{ sunMiddleHue }}</h1>
         <div id="slider-container">
             <Slider v-model="time"/>
         </div>
