@@ -33,7 +33,7 @@ onMounted(() => {
             <div id="left-top">
                 <!-- Profile Picture -->
                  <div id="profile-pic">
-                    <NuxtImg :src="pp[activePP]"/>
+                    <img :src="pp[activePP]" />
                  </div>
                  <h2>Tjioe <u>Andrew</u> Elvio Febrian</h2>
                  <div id="socials">
@@ -73,7 +73,14 @@ onMounted(() => {
         display: grid;
         grid-template-rows: 1fr 1fr;
         overflow: scroll;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
     }
+
+    #left::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+    }
+
     #left-top {
         display: flex;
         flex-direction: column;
@@ -92,18 +99,19 @@ onMounted(() => {
         padding: 2rem;
     }
     #profile-pic {
-        width: 14vw;
+        width: 14rem;
         aspect-ratio: 1 / 1;
         background-color: azure;
         border-radius: 50%;
+        overflow: hidden;
     }
 
     #profile-pic img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 50%;
         image-orientation: from-image;
+        display: block;
     }
 
     #socials {
@@ -128,6 +136,12 @@ onMounted(() => {
         padding: 1rem;
         padding-right: 2rem;
         overflow: scroll;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+
+    #right::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
     }
 
     .markdown :deep(p) {
