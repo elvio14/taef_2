@@ -195,10 +195,29 @@ const backgroundStyle = computed(() => {
     }
     return { background: layers.join(', ') }
 })
+
+const isMobile = useState<boolean>('isMobile', () => false)
+
+const updateIsMobile = () => {
+    isMobile.value = typeof window !== 'undefined' ? window.innerWidth < 850 : false
+}
+
+onMounted(() => {
+    updateIsMobile()
+    if (typeof window !== 'undefined') {
+        window.addEventListener('resize', updateIsMobile)
+    }
+})
+
+onUnmounted(() => {
+    if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', updateIsMobile)
+    }
+})
 </script>
 <template>
     <div id="layout-root" :style="backgroundStyle">
-        <div id="slider-container">
+        <div id="slider-container" :class="{ mobile: isMobile }">
             <Slider v-model="time"/>
         </div>
         <slot></slot> 
@@ -222,5 +241,10 @@ const backgroundStyle = computed(() => {
         z-index: 1000;
         padding: 1rem;
         border-radius: 0.5rem;
+    }
+
+    #slider-container.mobile {
+        left: 50%;
+        right: auto;
     }
 </style>

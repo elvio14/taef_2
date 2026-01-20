@@ -43,8 +43,8 @@ const currentProject = computed(() => {
 
 </script>
 <template>
-    <div id="root-div">
-
+<div id="root-div">
+    <div v-if="!isMobile">
         <nav class="card-nav">
             <NavButton name="About" color="var(--about-bg)" :isActive="activeCard === Card.About" @click="activeCard = Card.About"/>
             <NavButton name="Projects" color="var(--project-bg)" :isActive="activeCard === Card.Projects" @click="activeCard = Card.Projects"/>
@@ -74,8 +74,11 @@ const currentProject = computed(() => {
                 <ProjectCard v-if="currentProject" :project="currentProject"/>
             </div>
         </div>
-
     </div>
+    <div v-else>
+        <Mobile/>
+    </div>
+</div>
 </template>
 <style scoped>
     #root-div {
