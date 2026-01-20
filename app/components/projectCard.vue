@@ -108,7 +108,7 @@ const renderedMarkdown = computed(() => {
         display: flex;
         flex-direction: column;
         gap: 2rem;
-        overflow-y: scroll;
+        overflow-y: hidden;
     }
 
     #right {
