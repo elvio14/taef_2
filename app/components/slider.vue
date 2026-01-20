@@ -71,7 +71,7 @@ onUnmounted(() => {
                 :class="{ dragging: isDragging }"
                 :style="{ left: `${thumbPercent}%` }"
             >
-                <NuxtImg 
+                <img 
                     src="/SunMoon.png" 
                     alt="sunmoon icon"
                     :style="{ objectPosition: `-${spriteFrame}px 0` , cursor: 'pointer'}"

@@ -38,6 +38,10 @@ const getImages = () => {
     }) ?? []
 }
 
+const isGif = (imagePath: string) => {
+    return imagePath.toLowerCase().endsWith('.gif')
+}
+
 const renderedMarkdown = computed(() => {
     if (!props.project?.md) return ''
     return marked(props.project.md)
@@ -86,14 +90,49 @@ const renderedMarkdown = computed(() => {
                     :page="1"
                     arrows
                 >
-                  <NuxtImg :key="item" :src="item" class="project-image rounded-lg" />
-                </UCarousel>
-                <NuxtImg
-                    v-else-if="getImages().length === 1"
-                    :src="getImages()[0]"
+                  <NuxtImg 
+                    v-if="!isGif(item)"
+                    :key="`img-${item}`" 
+                    :src="item" 
+                    class="project-image rounded-lg"
+                    loading="lazy"
+                    format="webp"
+                    quality="80"
                     width="700"
-                    height="auto"
-                    className="rounded-lg project-image" />
+                    sizes="sm:100vw md:700px"
+                    :preload="false"
+                  />
+                  <img
+                    v-else
+                    :key="`gif-${item}`"
+                    :src="item"
+                    class="project-image rounded-lg"
+                    loading="lazy"
+                    width="700"
+                  />
+                </UCarousel>
+                <template v-else-if="getImages().length === 1">
+                  <NuxtImg
+                      v-if="!isGif(getImages()[0]!)"
+                      :src="getImages()[0]"
+                      width="700"
+                      height="auto"
+                      className="rounded-lg project-image"
+                      loading="lazy"
+                      format="webp"
+                      quality="80"
+                      sizes="sm:100vw md:700px"
+                      :preload="false"
+                  />
+                  <img
+                      v-else
+                      :src="getImages()[0]"
+                      width="700"
+                      height="auto"
+                      class="rounded-lg project-image"
+                      loading="lazy"
+                  />
+                </template>
             </div>
         </div>
     </article>
@@ -128,7 +167,16 @@ const renderedMarkdown = computed(() => {
 
     .project-image {
         object-fit: contain;
+        margin: 0 auto;
+        display: block;
     }
+
+    #right :deep(.carousel) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     .icon {
         width: 2rem;
         cursor: pointer;

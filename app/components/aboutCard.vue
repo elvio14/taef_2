@@ -20,7 +20,7 @@ const pp = [
 onMounted(() => {
     const interval = setInterval(() => {
         activePP.value = (activePP.value + 1) % pp.length
-    }, 1000)
+    }, 2000)
 
     onUnmounted(() => {
         clearInterval(interval)
