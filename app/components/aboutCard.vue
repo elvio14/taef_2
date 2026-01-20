@@ -103,6 +103,7 @@ onMounted(() => {
         height: 100%;
         object-fit: cover;
         border-radius: 50%;
+        image-orientation: from-image;
     }
 
     #socials {
