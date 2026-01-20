@@ -3,6 +3,29 @@ const { data: resume } = await useAsyncData('resume', () => queryCollection('res
 const {data: about} = await useAsyncData('about', () => queryCollection('about').first())
 
 const socials = ["insta", "linkedin", "mygithub"]
+
+const activePP = ref(0)
+
+const pp = [
+    "self_1.webp",
+    "self_2.webp",
+    "self_3.webp",
+    "self_4.webp",
+    "self_5.webp",
+    "self_6.webp",
+    "self_7.webp"
+]
+
+// Cycle through profile pictures every second
+onMounted(() => {
+    const interval = setInterval(() => {
+        activePP.value = (activePP.value + 1) % pp.length
+    }, 1000)
+
+    onUnmounted(() => {
+        clearInterval(interval)
+    })
+})
 </script>
 <template>
     <div id="about-root">
@@ -10,7 +33,7 @@ const socials = ["insta", "linkedin", "mygithub"]
             <div id="left-top">
                 <!-- Profile Picture -->
                  <div id="profile-pic">
-
+                    <img :src="pp[activePP]"/>
                  </div>
                  <h2>Tjioe <u>Andrew</u> Elvio Febrian</h2>
                  <div id="socials">
@@ -74,6 +97,14 @@ const socials = ["insta", "linkedin", "mygithub"]
         background-color: azure;
         border-radius: 50%;
     }
+
+    #profile-pic img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
     #socials {
         display: flex;
         flex-direction: row;

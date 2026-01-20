@@ -15,6 +15,10 @@ points:
   - > 
     I used Nuxt's Content feature that parses YML files as a collection of objects,
     allowing me to add new project data and icons easily.
+  - >
+    Contrary to the duality of Light and Dark mode, I used CSS gradients to create sky animation
+    portraying the sky from noon to midnight. The sun/moon animation on the button is a sprite I
+    drew in Procreate!
 github: taef_2
 date: 2026-01-08
 

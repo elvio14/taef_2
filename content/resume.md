@@ -3,9 +3,7 @@
 *Bachelor of Science, Honours* Major in **Computer Science**, Minor in **Cognitive Science**  
 York University  
 September 2023 - April 2027  
-GPA: 3.5/4.0  
-**Computer Science Courses**: Math, Physics, Data Structure and Algorithms, Computer Architecture, Software Design, Operating Systems, OOP, Communication Networks, AI.  
-**Cognitive Science Courses**: Philosophy of Mind, Cognitive Psychology, Linguistics, AI.
+GPA: 3.5/4.0
 
 *Advanced Diploma, Honours* in **Architectural Technology**  
 Humber Polytechnic  
