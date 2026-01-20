@@ -86,9 +86,9 @@ const renderedMarkdown = computed(() => {
                     :page="1"
                     arrows
                 >
-                  <img :key="item" :src="item" class="project-image rounded-lg">
+                  <NuxtImg :key="item" :src="item" class="project-image rounded-lg" />
                 </UCarousel>
-                <img
+                <NuxtImg
                     v-else-if="getImages().length === 1"
                     :src="getImages()[0]"
                     width="700"

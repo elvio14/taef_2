@@ -33,7 +33,7 @@ onMounted(() => {
             <div id="left-top">
                 <!-- Profile Picture -->
                  <div id="profile-pic">
-                    <img :src="pp[activePP]"/>
+                    <NuxtImg :src="pp[activePP]"/>
                  </div>
                  <h2>Tjioe <u>Andrew</u> Elvio Febrian</h2>
                  <div id="socials">
