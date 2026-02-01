@@ -3,7 +3,6 @@
 </script>
 <template>
     <div id="about-root">
-        <MobileSideBar :active-page-index="0"/>
         <div id="content">
             <AboutCard :isMobile="true"/>
         </div>

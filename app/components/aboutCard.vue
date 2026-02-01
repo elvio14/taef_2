@@ -190,6 +190,11 @@ onMounted(() => {
         display: block;
     }
 
+    #about-root.mobile-layout #profile-pic img {
+        image-orientation: none;
+        transform: rotate(0deg);
+    }
+
     #profile-pic::before {
         content: "";
         position: absolute;

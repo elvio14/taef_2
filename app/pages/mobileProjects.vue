@@ -14,7 +14,6 @@ const toggleSidebar = () => {
 </script>
 <template>
     <div id="project-root">
-        <MobileSideBar :active-page-index="1"/>
         <div id="content">
             <div v-for="(p, idx) in projects" :key="p.id">
                 <MobileProjectCard :project="p" 

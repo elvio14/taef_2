@@ -202,6 +202,13 @@ const updateIsMobile = () => {
     isMobile.value = typeof window !== 'undefined' ? window.innerWidth < 850 : false
 }
 
+const route = useRoute()
+const activePageIndex = computed(() => {
+    if (route.path === '/mobileAbout' || route.path === '/') return 0
+    if (route.path === '/mobileProjects') return 1
+    return 0
+})
+
 onMounted(() => {
     updateIsMobile()
     if (typeof window !== 'undefined') {
@@ -220,6 +227,7 @@ onUnmounted(() => {
         <div id="slider-container" :class="{ mobile: isMobile }">
             <Slider v-model="time"/>
         </div>
+        <MobileSideBar v-if="isMobile" :active-page-index="activePageIndex" />
         <slot></slot> 
     </div>
 </template>
@@ -244,7 +252,7 @@ onUnmounted(() => {
     }
 
     #slider-container.mobile {
-        top: max(env(safe-area-inset-top, 0px), 3rem);
+        top: max(env(safe-area-inset-top, 0px), 3.6rem);
         left: 70%;
         right: auto;
         width: 260px;
