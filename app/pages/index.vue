@@ -3,6 +3,7 @@ import MobileAbout from './mobileAbout.vue'
 
 
 const isMobile = useState<boolean>('isMobile', () => false)
+const isLoading = ref(true)
 
 const updateIsMobile = () => {
     isMobile.value = typeof window !== 'undefined' ? window.innerWidth < 850 : false
@@ -10,6 +11,7 @@ const updateIsMobile = () => {
 
 onMounted(() => {
     updateIsMobile()
+    isLoading.value = false
     if (typeof window !== 'undefined') {
         window.addEventListener('resize', updateIsMobile)
     }
@@ -46,7 +48,10 @@ const currentProject = computed(() => {
 </script>
 <template>
 <div id="root-div">
-    <div v-if="!isMobile">
+    <div v-if="isLoading" class="welcome-screen">
+        <h1>Welcome</h1>
+    </div>
+    <div v-else-if="!isMobile">
         <nav class="card-nav">
             <NavButton name="About" color="var(--about-bg)" :isActive="activeCard === Card.About" @click="activeCard = Card.About"/>
             <NavButton name="Projects" color="var(--project-bg)" :isActive="activeCard === Card.Projects" @click="activeCard = Card.Projects"/>
@@ -169,6 +174,21 @@ const currentProject = computed(() => {
         pointer-events: none; /* so it doesn't interfere with mouse events */
     }
 
+
+    .welcome-screen {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        background-color: var(--about-bg);
+    }
+
+    .welcome-screen h1 {
+        font-family: var(--heading-font);
+        font-size: 3rem;
+        color: #333;
+    }
     .hover-stack-icon {
         width: 1rem;
     }
