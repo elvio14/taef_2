@@ -244,7 +244,7 @@ onUnmounted(() => {
     }
 
     #slider-container.mobile {
-        top: calc(env(safe-area-inset-top, 0px) + 2rem);
+        top: max(env(safe-area-inset-top, 0px), 3rem);
         left: 70%;
         right: auto;
         width: 260px;
