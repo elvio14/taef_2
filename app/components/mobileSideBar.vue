@@ -4,6 +4,7 @@ defineProps<{
 }>()
 
 const goToPage = (page: string) => {
+    showSidebar.value = false
     navigateTo(page)
 }
 
@@ -28,12 +29,14 @@ const toggleSidebar = () => {
 
 </template>
 <style scoped>
+#sidebar {
+    z-index: 1000;
+}
 .mobile-sidebar {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     padding-top: 6rem;
-    z-index: 200;
 }
 
 .mobile-sidebar button {
