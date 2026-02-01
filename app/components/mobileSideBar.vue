@@ -60,7 +60,7 @@ const toggleSidebar = () => {
 
 #sidebar-toggle {
     position: fixed;
-    top: 1rem;
+    top: 1.5rem;
     left: 1rem;
     z-index: 1000;
     background: white;

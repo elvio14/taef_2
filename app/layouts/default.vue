@@ -244,10 +244,11 @@ onUnmounted(() => {
     }
 
     #slider-container.mobile {
-        top: 1rem;
-        left: 50%;
+        top: 1.5rem;
+        left: 70%;
         right: auto;
         width: 260px;
         transform: translateX(-50%);
+        padding: 0.5rem 1rem;
     }
 </style>
