@@ -3,11 +3,9 @@
 </script>
 <template>
     <div id="about-root">
+        <MobileSideBar :active-page-index="0"/>
         <div id="content">
             <AboutCard :isMobile="true"/>
-        </div>
-        <div id="navbar">
-            <MobileNavBar :active-page="0"/>
         </div>
     </div>
 </template>
@@ -19,6 +17,7 @@
     flex-direction: column;
     overflow: hidden;
     padding-top: 5rem;
+    position: relative;
 }
 
 #content {
@@ -26,8 +25,4 @@
     overflow: auto;
 }
 
-#navbar {
-    height: 4rem;
-    flex-shrink: 0;
-}
 </style>

@@ -6,19 +6,21 @@ const { data: projects } = await useAsyncData('projects', () => {
 })
 
 const activeProjectIndex = ref(1)
+const showSidebar = ref(false)
 
+const toggleSidebar = () => {
+    showSidebar.value = !showSidebar.value
+}
 </script>
 <template>
     <div id="project-root">
+        <MobileSideBar :active-page-index="1"/>
         <div id="content">
             <div v-for="(p, idx) in projects" :key="p.id">
                 <MobileProjectCard :project="p" 
                 :is-active="activeProjectIndex === idx" 
                 @click="()=>activeProjectIndex = idx"/>
             </div>
-        </div>
-        <div id="navbar">
-            <MobileNavBar :active-page="1"/>
         </div>
     </div>
 </template>
