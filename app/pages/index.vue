@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import MobileAbout from './mobileAbout.vue'
+
 
 const isMobile = useState<boolean>('isMobile', () => false)
 
@@ -76,7 +78,7 @@ const currentProject = computed(() => {
         </div>
     </div>
     <div v-else>
-        <Mobile/>
+        <MobileAbout/>
     </div>
 </div>
 </template>

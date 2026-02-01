@@ -51,11 +51,33 @@ const onMouseUp = () => {
     window.removeEventListener('mouseup', onMouseUp)
 }
 
+// touch events
+const onTouchStart = (e: TouchEvent) => {
+    if (!e.touches[0]) return
+    isDragging.value = true
+    updateValue(e.touches[0].clientX)
+    window.addEventListener('touchmove', onTouchMove)
+    window.addEventListener('touchend', onTouchEnd)
+}
+
+const onTouchMove = (e: TouchEvent) => {
+    if (!isDragging.value || !e.touches[0]) return
+    e.preventDefault() // prevent scrolling while dragging
+    updateValue(e.touches[0].clientX)
+}
+
+const onTouchEnd = () => {
+    isDragging.value = false
+    window.removeEventListener('touchmove', onTouchMove)
+    window.removeEventListener('touchend', onTouchEnd)
+}
 
 // cleanup on unmount
 onUnmounted(() => {
     window.removeEventListener('mousemove', onMouseMove)
     window.removeEventListener('mouseup', onMouseUp)
+    window.removeEventListener('touchmove', onTouchMove)
+    window.removeEventListener('touchend', onTouchEnd)
 })
 </script>
 
@@ -65,6 +87,7 @@ onUnmounted(() => {
             ref="trackRef"
             class="slider-track"
             @mousedown="onMouseDown"
+            @touchstart="onTouchStart"
         >
             <div 
                 class="slider-thumb slider-icon"

@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+defineProps<{
+    isMobile?: boolean
+}>()
+
 const { data: resume } = await useAsyncData('resume', () => queryCollection('resume').first())
 const {data: about} = await useAsyncData('about', () => queryCollection('about').first())
 
@@ -57,31 +61,13 @@ onMounted(() => {
         activePP.value = (activePP.value + 1) % pp.length
     }, 2000)
 
-    // scroll fade overlays for #left
-    const leftEl = document.getElementById('left') as HTMLElement | null
-    const updateFades = () => {
-        if (!leftEl) return
-        const { scrollTop, scrollHeight, clientHeight } = leftEl
-        const atTop = scrollTop <= 8
-        const atBottom = scrollTop + clientHeight >= scrollHeight - 8
-        showTopFade.value = !atTop
-        showBottomFade.value = !atBottom
-    }
-
-    if (leftEl) {
-        leftEl.addEventListener('scroll', updateFades, { passive: true })
-        // initial state
-        updateFades()
-    }
-
     onUnmounted(() => {
         clearInterval(interval)
-        if (leftEl) leftEl.removeEventListener('scroll', updateFades)
     })
 })
 </script>
 <template>
-    <div id="about-root">
+    <div id="about-root" :class="{ 'mobile-layout': isMobile }">
         <div id="left">
                 <div id="left-top">
                 <!-- Profile Picture -->
@@ -105,9 +91,6 @@ onMounted(() => {
                         </UTooltip>
                     </div>
                 </div>
-                <div v-show="showTopFade" class="fade-top" aria-hidden="true"></div>
-                <div v-show="showBottomFade" class="fade-bottom" aria-hidden="true"></div>
-
             </div>
             <div id="left-bottom">
                 <div id="textbox" class="markdown">
@@ -116,14 +99,14 @@ onMounted(() => {
             </div>
         </div>
         <div id="right" class="markdown">
+            <div id="download-resume">
+                <UTooltip text="Download my resume" >
+                    <div id="about--icon-download" class="social-icon" 
+                    v-html="getIconSVG('download')" aria-hidden="true"
+                    @click="downloadResume"></div>
+                </UTooltip>
+            </div>
             <ContentRenderer v-if="resume" :value="resume" />
-        </div>
-        <div id="download-resume">
-            <UTooltip text="Download my resume" >
-                <div id="about--icon-download" class="social-icon" 
-                v-html="getIconSVG('download')" aria-hidden="true"
-                @click="downloadResume"></div>
-            </UTooltip>
         </div>
     </div>
 </template>
@@ -137,6 +120,16 @@ onMounted(() => {
         position: relative;
     }
 
+    #about-root.mobile-layout {
+        background-color: transparent;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        overflow-y: auto;
+        height: 100vh;
+        padding: 1rem;
+        overflow-x: hidden;
+    }
+
     #left {
         background: linear-gradient(to bottom, var(--about-on-bg) 0%, white 80%);
         border-radius: 2rem;
@@ -145,6 +138,13 @@ onMounted(() => {
         overflow: scroll;
         scrollbar-width: none; /* Firefox */
         -ms-overflow-style: none; /* IE and Edge */
+    }
+
+    #about-root.mobile-layout #left {
+        padding-top: 1rem;
+        background: linear-gradient(to bottom, var(--about-on-bg) 0%, rgba(255, 255, 255, 0.562) 80%);
+        overflow: visible;
+        grid-template-rows: auto auto;
     }
 
     #left::-webkit-scrollbar {
@@ -157,6 +157,7 @@ onMounted(() => {
         gap: 1rem;
         align-items: center;
         justify-content: center;
+        text-align: center;
     }
     #left-bottom {
         display: flex;
@@ -167,6 +168,9 @@ onMounted(() => {
     #textbox {
         width: 100%;
         padding: 2rem;
+    }
+    #about-root.mobile-layout #textbox {
+        padding: 1rem;
     }
     #profile-pic {
         width: 14rem;
@@ -229,7 +233,7 @@ onMounted(() => {
         right: 1.25rem;
         bottom: 1.25rem;
         z-index: 10;
-        background-color: rgba(255, 255, 255, 0.589);
+        background-color: rgb(255, 255, 255);
         border-radius: 50%;
         border: solid 2px transparent;
         width: 2rem;
@@ -240,15 +244,29 @@ onMounted(() => {
         padding-left: 0.1rem;
     }
 
+    #about-root.mobile-layout #download-resume {
+        position: static;
+        margin-bottom: 1rem;
+        margin-left: auto;
+    }
+
     #download-resume:hover {
-        border-color: white;
+        border-color: rgb(59, 209, 146);
     }
     #right {
-        padding: 1rem;
-        padding-right: 2rem;
+        padding: 2rem;
+        border-radius: 2rem;
+        background: linear-gradient(to bottom, var(--about-on-bg) 0%, rgba(255, 255, 255, 0.616) 80%);
         overflow: scroll;
         scrollbar-width: none; /* Firefox */
         -ms-overflow-style: none; /* IE and Edge */
+    }
+
+    #about-root.mobile-layout #right {
+        overflow: visible;
+        border-radius: 2rem;
+        padding: 1rem;
+        padding-top: 2rem;
     }
 
     #right::-webkit-scrollbar {

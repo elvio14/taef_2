@@ -24,22 +24,10 @@ const formattedDate = computed(() => {
     return d.toLocaleDateString()
 })
 
-const getGithubURL = (id: string) => {
-    if(id.includes("/")){
-        return `https://www.github.com/${id}`
-    }else {
-        return `https://www.github.com/elvio14/${id}`
-    }
-}
-
 const getImages = () => {
     return props.project.images?.map((image) => {
         return `/${image}`
     }) ?? []
-}
-
-const isGif = (imagePath: string) => {
-    return imagePath.toLowerCase().endsWith('.gif')
 }
 
 const renderedMarkdown = computed(() => {
@@ -137,7 +125,7 @@ const renderedMarkdown = computed(() => {
         </div>
     </article>
 </template>
-<style lang="css" scoped>
+<style lang="css">
     #left {
         background-color:var(--project-on-bg);
         border-top-left-radius: 1rem;
