@@ -61,7 +61,7 @@ const renderedMarkdown = computed(() => {
                 </div>
             </div>
             <div v-if="project.md" class="markdown-content" v-html="renderedMarkdown"></div>
-            <div className="flex flex-col gap-4">
+            <div class="points-container flex flex-col gap-4">
                 <p v-for="(point,index) in project.points" :key="`point-${project.id}-${index}`">{{ point }}</p>
             </div>
         </div>
@@ -168,6 +168,19 @@ const renderedMarkdown = computed(() => {
     .icon {
         width: 2rem;
         cursor: pointer;
+    }
+
+    .points-container {
+        overflow-y: auto;
+        flex: 1;
+        min-height: 0;
+        max-height: 20rem;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+
+    .points-container::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
     }
     
     .markdown-content :deep(h1) { font-size: 2rem; margin-bottom: 1rem; }
