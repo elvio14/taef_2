@@ -1,9 +1,8 @@
 ## Education
 
-*Bachelor of Science, Honours* Major in **Computer Science**, Minor in **Cognitive Science**  
+*Bachelor of Arts, Honours* Major in **Philosophy**, Minor in **Computer Science**  
 York University  
 September 2023 - April 2027  
-GPA: 3.5/4.0
 
 *Advanced Diploma, Honours* in **Architectural Technology**  
 Humber Polytechnic  

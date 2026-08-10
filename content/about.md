@@ -2,8 +2,7 @@ Hi! Thanks for visiting!
 
 My name is Andrew, and here's some quick facts about me:
 
-- 🇲 I'm an M-shaped Programming Generalist.
-- 🤖 I love exploring new tech for building digital solutions.
-- 🧠 My Cognitive Science studies gives me insights on HCI and UI/UX design.
-- My hobbies include: digital painting 🖌️, playing guitar 🎸, reading philosophy books 📖, watching anime 💢.
-- I live in Toronto, Canada 🇨🇦 since 2018. Born and raised in Indonesia 🇮🇩.
+- I'm a Philosophy Major and Computer Science Minor
+- My areas of interest in philosophy are Philosophy of Mind and Cognitive Science, and Applied Ethics (in AI and Psychiatry).
+- I grew up in Indonesia, and moved to Toronto when I was 18.
+- I am applying for a graduate studies in philosophy for Fall 2027.
