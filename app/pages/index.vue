@@ -119,7 +119,6 @@ const currentProject = computed(() => {
         grid-template-columns: 1fr 5fr;
         align-items: stretch;
         min-height: 0;
-        overflow-y: hidden;
         background-color: var(--project-bg);
     }
 
